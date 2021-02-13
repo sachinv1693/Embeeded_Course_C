@@ -1,0 +1,1 @@
+file descriptor value of file redirect.txt: 3
