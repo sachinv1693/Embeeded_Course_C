@@ -1,0 +1,1 @@
+ delay.d  delay.p1:  delay.c clcd.h main.h itoa_display.h adc.h delay.h init_ADC_config.h init_CLCD_config.h

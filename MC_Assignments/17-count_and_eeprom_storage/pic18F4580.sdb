@@ -1,0 +1,397 @@
+[p LITE_MODE AUTOSTATIC LFSROK ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4580 ]
+[d frameptr 4065 ]
+"8 /opt/microchip/xc8/v1.36/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"62 /opt/microchip/xc8/v1.36/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.36/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 /opt/microchip/xc8/v1.36/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 /opt/microchip/xc8/v1.36/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 /opt/microchip/xc8/v1.36/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"8 /opt/microchip/xc8/v1.36/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 /opt/microchip/xc8/v1.36/sources/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 /opt/microchip/xc8/v1.36/sources/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 /opt/microchip/xc8/v1.36/sources/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /opt/microchip/xc8/v1.36/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/clcd.c
+[v _clcd_write clcd_write `(v  1 e 1 0 ]
+"26
+[v _init_clcd init_clcd `(v  1 e 1 0 ]
+"41
+[v _clcd_print clcd_print `(v  1 e 1 0 ]
+"50
+[v _clcd_putch clcd_putch `(v  1 e 1 0 ]
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/eeprom.c
+[v _write_internal_eeprom write_internal_eeprom `(v  1 e 1 0 ]
+"40
+[v _read_internal_eeprom read_internal_eeprom `(uc  1 e 1 0 ]
+"6 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/isr.c
+[v _isr isr `II(v  1 e 1 0 ]
+"11 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/main.c
+[v _init_config init_config `(v  1 s 1 init_config ]
+"20
+[v _write_onto_eeprom write_onto_eeprom `(v  1 e 1 0 ]
+"30
+[v _read_from_eeprom read_from_eeprom `(v  1 e 1 0 ]
+"46
+[v _check_matrix_keypad check_matrix_keypad `(v  1 e 1 0 ]
+"116
+[v _main main `(v  1 e 1 0 ]
+"4 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/matrix_keypad.c
+[v _init_matrix_keypad init_matrix_keypad `(v  1 e 1 0 ]
+"18
+[v _scan_key scan_key `(uc  1 e 1 0 ]
+"88
+[v _read_switches read_switches `(uc  1 e 1 0 ]
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/timer0.c
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+"28209 /opt/microchip/xc8/v1.36/include/pic18f4580.h
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S280 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"28253
+[s S289 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CANRX 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S298 . 1 `uc 1 AN10 1 0 :1:0 
+`uc 1 AN8 1 0 :1:1 
+`uc 1 CANTX 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 AN9 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S307 . 1 `uc 1 FLT0 1 0 :1:0 
+]
+[s S309 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S312 . 1 `S280 1 . 1 0 `S289 1 . 1 0 `S298 1 . 1 0 `S307 1 . 1 0 `S309 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES312  1 e 1 @3969 ]
+[s S36 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"28430
+[s S45 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 SCK 1 0 :1:3 
+`uc 1 SDI 1 0 :1:4 
+`uc 1 SDO 1 0 :1:5 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S54 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :2:1 
+`uc 1 SCL 1 0 :1:3 
+`uc 1 SDA 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S62 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+]
+[s S65 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S68 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S71 . 1 `S36 1 . 1 0 `S45 1 . 1 0 `S54 1 . 1 0 `S62 1 . 1 0 `S65 1 . 1 0 `S68 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES71  1 e 1 @3970 ]
+"28554
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+[s S116 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"28599
+[s S125 . 1 `uc 1 PSP0 1 0 :1:0 
+`uc 1 PSP1 1 0 :1:1 
+`uc 1 PSP2 1 0 :1:2 
+`uc 1 PSP3 1 0 :1:3 
+`uc 1 PSP4 1 0 :1:4 
+`uc 1 PSP5 1 0 :1:5 
+`uc 1 PSP6 1 0 :1:6 
+`uc 1 PSP7 1 0 :1:7 
+]
+[s S134 . 1 `uc 1 C1INB 1 0 :1:0 
+`uc 1 C1INA 1 0 :1:1 
+`uc 1 C2INB 1 0 :1:2 
+`uc 1 C2INA 1 0 :1:3 
+`uc 1 P1A 1 0 :1:4 
+`uc 1 P1B 1 0 :1:5 
+`uc 1 P1C 1 0 :1:6 
+`uc 1 P1D 1 0 :1:7 
+]
+[s S143 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ECCP1 1 0 :1:4 
+]
+[s S146 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S149 . 1 `S116 1 . 1 0 `S125 1 . 1 0 `S134 1 . 1 0 `S143 1 . 1 0 `S146 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES149  1 e 1 @3971 ]
+"29655
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"29876
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"30097
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S399 . 1 `uc 1 ECCP1IF 1 0 :1:0 
+`uc 1 TMR3IF 1 0 :1:1 
+`uc 1 HLVDIF 1 0 :1:2 
+`uc 1 BCLIF 1 0 :1:3 
+`uc 1 EEIF 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CMIF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"30872
+[s S408 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LVDIF 1 0 :1:2 
+]
+[u S411 . 1 `S399 1 . 1 0 `S408 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES411  1 e 1 @4001 ]
+[s S369 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"31310
+[s S378 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S381 . 1 `S369 1 . 1 0 `S378 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES381  1 e 1 @4006 ]
+"31354
+[v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
+"31360
+[v _EEDATA EEDATA `VEuc  1 e 1 @4008 ]
+"31366
+[v _EEADR EEADR `VEuc  1 e 1 @4009 ]
+"32807
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"34328
+"34328
+[v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
+"37057
+"37057
+[v _GIE GIE `VEb  1 e 0 @32663 ]
+"37477
+[v _PSA PSA `VEb  1 e 0 @32427 ]
+"37549
+[v _RBPU RBPU `VEb  1 e 0 @32655 ]
+"39375
+[v _T08BIT T08BIT `VEb  1 e 0 @32430 ]
+"39379
+[v _T0CS T0CS `VEb  1 e 0 @32429 ]
+"39387
+[v _T0PS0 T0PS0 `VEb  1 e 0 @32424 ]
+"39389
+[v _T0PS1 T0PS1 `VEb  1 e 0 @32425 ]
+"39391
+[v _T0PS2 T0PS2 `VEb  1 e 0 @32426 ]
+"39461
+[v _TMR0IE TMR0IE `VEb  1 e 0 @32661 ]
+"39463
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+"39467
+[v _TMR0ON TMR0ON `VEb  1 e 0 @32431 ]
+"39561
+[v _TRISD7 TRISD7 `VEb  1 e 0 @31919 ]
+"5 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/main.c
+[v _tim_count tim_count `us  1 e 2 0 ]
+[v _delay delay `us  1 e 2 0 ]
+"8
+[v _count_str count_str `[11]uc  1 s 11 count_str ]
+[v _eeprom_addr eeprom_addr `uc  1 s 1 eeprom_addr ]
+[v _read_addr read_addr `uc  1 s 1 read_addr ]
+[v _display display `uc  1 s 1 display ]
+[v _storage_str storage_str `[11]uc  1 s 11 storage_str ]
+[v _disp_num disp_num `uc  1 s 1 disp_num ]
+[v _count_overflow count_overflow `uc  1 s 1 count_overflow ]
+[v _first_change first_change `uc  1 s 1 first_change ]
+"116
+[v _main main `(v  1 e 1 0 ]
+{
+"135
+[v main@i i `s  1 a 2 30 ]
+"172
+} 0
+"11
+[v _init_config init_config `(v  1 s 1 init_config ]
+{
+"17
+} 0
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/timer0.c
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+{
+"24
+} 0
+"4 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/matrix_keypad.c
+[v _init_matrix_keypad init_matrix_keypad `(v  1 e 1 0 ]
+{
+"16
+} 0
+"26 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/clcd.c
+[v _init_clcd init_clcd `(v  1 e 1 0 ]
+{
+"39
+} 0
+"50
+[v _clcd_putch clcd_putch `(v  1 e 1 0 ]
+{
+[v clcd_putch@data data `Cuc  1 a 1 wreg ]
+[v clcd_putch@data data `Cuc  1 a 1 wreg ]
+[v clcd_putch@addr addr `uc  1 p 1 16 ]
+"52
+[v clcd_putch@data data `Cuc  1 a 1 17 ]
+"54
+} 0
+"41
+[v _clcd_print clcd_print `(v  1 e 1 0 ]
+{
+[v clcd_print@data data `*.35Cuc  1 p 2 16 ]
+[v clcd_print@addr addr `uc  1 p 1 18 ]
+"48
+} 0
+"46 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/main.c
+[v _check_matrix_keypad check_matrix_keypad `(v  1 e 1 0 ]
+{
+"48
+[v check_matrix_keypad@key_edge_trig key_edge_trig `uc  1 a 1 25 ]
+[v check_matrix_keypad@key_level_trig key_level_trig `uc  1 a 1 24 ]
+"114
+} 0
+"20
+[v _write_onto_eeprom write_onto_eeprom `(v  1 e 1 0 ]
+{
+"22
+[v write_onto_eeprom@i i `us  1 a 2 22 ]
+"27
+} 0
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/eeprom.c
+[v _write_internal_eeprom write_internal_eeprom `(v  1 e 1 0 ]
+{
+[v write_internal_eeprom@address address `uc  1 a 1 wreg ]
+[v write_internal_eeprom@address address `uc  1 a 1 wreg ]
+[v write_internal_eeprom@data data `uc  1 p 1 20 ]
+"6
+[v write_internal_eeprom@address address `uc  1 a 1 21 ]
+"38
+} 0
+"8 /opt/microchip/xc8/v1.36/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign sign `uc  1 a 1 19 ]
+[v ___awmod@counter counter `uc  1 a 1 18 ]
+"8
+[v ___awmod@dividend dividend `i  1 p 2 14 ]
+[v ___awmod@divisor divisor `i  1 p 2 16 ]
+"35
+} 0
+"88 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/matrix_keypad.c
+[v _read_switches read_switches `(uc  1 e 1 0 ]
+{
+[v read_switches@detection_type detection_type `uc  1 a 1 wreg ]
+[v read_switches@detection_type detection_type `uc  1 a 1 wreg ]
+"90
+[v read_switches@once once `uc  1 s 1 once ]
+[v read_switches@key key `uc  1 s 1 key ]
+[v read_switches@key_state key_state `uc  1 s 1 key_state ]
+"92
+[v read_switches@detection_type detection_type `uc  1 a 1 14 ]
+"112
+} 0
+"18
+[v _scan_key scan_key `(uc  1 e 1 0 ]
+{
+"86
+} 0
+"30 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/main.c
+[v _read_from_eeprom read_from_eeprom `(v  1 e 1 0 ]
+{
+"33
+[v read_from_eeprom@i i `us  1 a 2 19 ]
+"43
+} 0
+"40 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/eeprom.c
+[v _read_internal_eeprom read_internal_eeprom `(uc  1 e 1 0 ]
+{
+[v read_internal_eeprom@address address `uc  1 a 1 wreg ]
+[v read_internal_eeprom@address address `uc  1 a 1 wreg ]
+"43
+[v read_internal_eeprom@address address `uc  1 a 1 14 ]
+"59
+} 0
+"8 /opt/microchip/xc8/v1.36/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 18 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 14 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 16 ]
+"26
+} 0
+"3 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/clcd.c
+[v _clcd_write clcd_write `(v  1 e 1 0 ]
+{
+[v clcd_write@byte byte `uc  1 a 1 wreg ]
+[v clcd_write@byte byte `uc  1 a 1 wreg ]
+[v clcd_write@control_bit control_bit `uc  1 p 1 14 ]
+"5
+[v clcd_write@byte byte `uc  1 a 1 15 ]
+"24
+} 0
+"6 /home/ubuntu/ECEP/MC/Assignments/17-count_and_eeprom_storage/isr.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"18
+} 0

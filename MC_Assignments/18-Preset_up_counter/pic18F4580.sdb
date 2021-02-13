@@ -1,0 +1,268 @@
+[p LITE_MODE AUTOSTATIC LFSROK ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4580 ]
+[d frameptr 4065 ]
+"8 /opt/microchip/xc8/v1.36/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"62 /opt/microchip/xc8/v1.36/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.36/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 /opt/microchip/xc8/v1.36/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 /opt/microchip/xc8/v1.36/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 /opt/microchip/xc8/v1.36/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 /opt/microchip/xc8/v1.36/sources/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 /opt/microchip/xc8/v1.36/sources/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 /opt/microchip/xc8/v1.36/sources/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /opt/microchip/xc8/v1.36/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"3 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/clcd.c
+[v _clcd_write clcd_write `(v  1 e 1 0 ]
+"26
+[v _init_clcd init_clcd `(v  1 e 1 0 ]
+"41
+[v _clcd_print clcd_print `(v  1 e 1 0 ]
+"50
+[v _clcd_putch clcd_putch `(v  1 e 1 0 ]
+"10 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/main.c
+[v _init_config init_config `(v  1 s 1 init_config ]
+"17
+[v _check_matrix_keypad check_matrix_keypad `(v  1 e 1 0 ]
+"50
+[v _main main `(v  1 e 1 0 ]
+"4 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/matrix_keypad.c
+[v _init_matrix_keypad init_matrix_keypad `(v  1 e 1 0 ]
+"18
+[v _scan_key scan_key `(uc  1 e 1 0 ]
+"88
+[v _read_switches read_switches `(uc  1 e 1 0 ]
+"28209 /opt/microchip/xc8/v1.36/include/pic18f4580.h
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S207 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"28253
+[s S216 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CANRX 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S225 . 1 `uc 1 AN10 1 0 :1:0 
+`uc 1 AN8 1 0 :1:1 
+`uc 1 CANTX 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 AN9 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S234 . 1 `uc 1 FLT0 1 0 :1:0 
+]
+[s S236 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S239 . 1 `S207 1 . 1 0 `S216 1 . 1 0 `S225 1 . 1 0 `S234 1 . 1 0 `S236 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES239  1 e 1 @3969 ]
+[s S21 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"28430
+[s S30 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 SCK 1 0 :1:3 
+`uc 1 SDI 1 0 :1:4 
+`uc 1 SDO 1 0 :1:5 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S39 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :2:1 
+`uc 1 SCL 1 0 :1:3 
+`uc 1 SDA 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S47 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+]
+[s S50 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S53 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S56 . 1 `S21 1 . 1 0 `S30 1 . 1 0 `S39 1 . 1 0 `S47 1 . 1 0 `S50 1 . 1 0 `S53 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES56  1 e 1 @3970 ]
+"28554
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+[s S101 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"28599
+[s S110 . 1 `uc 1 PSP0 1 0 :1:0 
+`uc 1 PSP1 1 0 :1:1 
+`uc 1 PSP2 1 0 :1:2 
+`uc 1 PSP3 1 0 :1:3 
+`uc 1 PSP4 1 0 :1:4 
+`uc 1 PSP5 1 0 :1:5 
+`uc 1 PSP6 1 0 :1:6 
+`uc 1 PSP7 1 0 :1:7 
+]
+[s S119 . 1 `uc 1 C1INB 1 0 :1:0 
+`uc 1 C1INA 1 0 :1:1 
+`uc 1 C2INB 1 0 :1:2 
+`uc 1 C2INA 1 0 :1:3 
+`uc 1 P1A 1 0 :1:4 
+`uc 1 P1B 1 0 :1:5 
+`uc 1 P1C 1 0 :1:6 
+`uc 1 P1D 1 0 :1:7 
+]
+[s S128 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ECCP1 1 0 :1:4 
+]
+[s S131 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S134 . 1 `S101 1 . 1 0 `S110 1 . 1 0 `S119 1 . 1 0 `S128 1 . 1 0 `S131 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES134  1 e 1 @3971 ]
+"29655
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"29876
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"30097
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"32807
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"37549
+"37549
+[v _RBPU RBPU `VEb  1 e 0 @32655 ]
+"39561
+[v _TRISD7 TRISD7 `VEb  1 e 0 @31919 ]
+"4 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/main.c
+[v _count_str count_str `[11]uc  1 s 11 count_str ]
+[v _delay delay `uc  1 s 1 delay ]
+[v _display display `uc  1 s 1 display ]
+[v _count_overflow count_overflow `uc  1 s 1 count_overflow ]
+"7
+[v _selected_index selected_index `s  1 e 2 0 ]
+[v _wait wait `s  1 e 2 0 ]
+"50
+[v _main main `(v  1 e 1 0 ]
+{
+"71
+[v main@i i `s  1 a 2 10 ]
+"108
+} 0
+"10
+[v _init_config init_config `(v  1 s 1 init_config ]
+{
+"14
+} 0
+"4 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/matrix_keypad.c
+[v _init_matrix_keypad init_matrix_keypad `(v  1 e 1 0 ]
+{
+"16
+} 0
+"26 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/clcd.c
+[v _init_clcd init_clcd `(v  1 e 1 0 ]
+{
+"39
+} 0
+"50
+[v _clcd_putch clcd_putch `(v  1 e 1 0 ]
+{
+[v clcd_putch@data data `Cuc  1 a 1 wreg ]
+[v clcd_putch@data data `Cuc  1 a 1 wreg ]
+[v clcd_putch@addr addr `uc  1 p 1 2 ]
+"52
+[v clcd_putch@data data `Cuc  1 a 1 3 ]
+"54
+} 0
+"41
+[v _clcd_print clcd_print `(v  1 e 1 0 ]
+{
+[v clcd_print@data data `*.35Cuc  1 p 2 2 ]
+[v clcd_print@addr addr `uc  1 p 1 4 ]
+"48
+} 0
+"17 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/main.c
+[v _check_matrix_keypad check_matrix_keypad `(v  1 e 1 0 ]
+{
+"20
+[v check_matrix_keypad@i i `us  1 a 2 3 ]
+"19
+[v check_matrix_keypad@key key `uc  1 a 1 5 ]
+"48
+} 0
+"88 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/matrix_keypad.c
+[v _read_switches read_switches `(uc  1 e 1 0 ]
+{
+[v read_switches@detection_type detection_type `uc  1 a 1 wreg ]
+[v read_switches@detection_type detection_type `uc  1 a 1 wreg ]
+"90
+[v read_switches@once once `uc  1 s 1 once ]
+[v read_switches@key key `uc  1 s 1 key ]
+[v read_switches@key_state key_state `uc  1 s 1 key_state ]
+"92
+[v read_switches@detection_type detection_type `uc  1 a 1 0 ]
+"112
+} 0
+"18
+[v _scan_key scan_key `(uc  1 e 1 0 ]
+{
+"86
+} 0
+"3 /home/ubuntu/ECEP/MC/Assignments/18-Preset_up_counter/clcd.c
+[v _clcd_write clcd_write `(v  1 e 1 0 ]
+{
+[v clcd_write@byte byte `uc  1 a 1 wreg ]
+[v clcd_write@byte byte `uc  1 a 1 wreg ]
+[v clcd_write@control_bit control_bit `uc  1 p 1 0 ]
+"5
+[v clcd_write@byte byte `uc  1 a 1 1 ]
+"24
+} 0
+"8 /opt/microchip/xc8/v1.36/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"8
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"35
+} 0

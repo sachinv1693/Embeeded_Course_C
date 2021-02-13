@@ -1,0 +1,1 @@
+ main.d  main.p1:  main.c clcd.h main.h matrix_keypad.h isr.h pic_specific.h eeprom.h timer0.h

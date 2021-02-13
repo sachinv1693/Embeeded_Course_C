@@ -1,0 +1,1476 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.36 build -262312587 
+                                                                                               Thu Jan 16 13:33:58 2020
+
+Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    21  0000                     
+    22                           	psect	idataCOMRAM
+    23  002D0B                     __pidataCOMRAM:
+    24                           	opt stack 0
+    25                           
+    26                           ;initializer for _digit
+    27  002D0B  E7                 	db	231
+    28  002D0C  21                 	db	33
+    29  002D0D  CB                 	db	203
+    30  002D0E  6B                 	db	107
+    31  002D0F  2D                 	db	45
+    32  002D10  6E                 	db	110
+    33  002D11  EE                 	db	238
+    34  002D12  23                 	db	35
+    35  002D13  EF                 	db	239
+    36  002D14  6F                 	db	111
+    37                           
+    38                           ;initializer for read_digital_keypad@once
+    39  002D15  01                 	db	1
+    40                           
+    41                           ;initializer for _ssd
+    42  002D16  E7                 	db	231
+    43  002D17  00                 	db	0
+    44  002D18  00                 	db	0
+    45  002D19  00                 	db	0
+    46  0000                     _ADCON1	set	4033
+    47  0000                     _EEADR	set	4009
+    48  0000                     _EECON1bits	set	4006
+    49  0000                     _EECON2	set	4007
+    50  0000                     _EEDATA	set	4008
+    51  0000                     _PIR2bits	set	4001
+    52  0000                     _PORTA	set	3968
+    53  0000                     _PORTC	set	3970
+    54  0000                     _PORTD	set	3971
+    55  0000                     _TRISA	set	3986
+    56  0000                     _TRISC	set	3988
+    57  0000                     _TRISD	set	3989
+    58  0000                     _GIE	set	32663
+    59                           
+    60                           ; #config settings
+    61                           
+    62                           	psect	cinit
+    63  002D64                     __pcinit:
+    64                           	opt stack 0
+    65  002D64                     start_initialization:
+    66                           	opt stack 0
+    67  002D64                     __initialization:
+    68                           	opt stack 0
+    69                           
+    70                           ; Initialize objects allocated to COMRAM (15 bytes)
+    71                           ; load TBLPTR registers with __pidataCOMRAM
+    72  002D64  0E0B               	movlw	low __pidataCOMRAM
+    73  002D66  6EF6               	movwf	tblptrl,c
+    74  002D68  0E2D               	movlw	high __pidataCOMRAM
+    75  002D6A  6EF7               	movwf	tblptrh,c
+    76  002D6C  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    77  002D6E  6EF8               	movwf	tblptru,c
+    78  002D70  EE00  F016         	lfsr	0,__pdataCOMRAM
+    79  002D74  EE10 F00F          	lfsr	1,15
+    80  002D78                     copy_data0:
+    81  002D78  0009               	tblrd		*+
+    82  002D7A  CFF5 FFEE          	movff	tablat,postinc0
+    83  002D7E  50E5               	movf	postdec1,w,c
+    84  002D80  50E1               	movf	fsr1l,w,c
+    85  002D82  E1FA               	bnz	copy_data0
+    86  002D84                     end_of_initialization:
+    87                           	opt stack 0
+    88  002D84                     __end_of__initialization:
+    89                           	opt stack 0
+    90  002D84  0100               	movlb	0
+    91  002D86  EF59  F017         	goto	_main	;jump to C main() function
+    92                           tblptru	equ	0xFF8
+    93                           tblptrh	equ	0xFF7
+    94                           tblptrl	equ	0xFF6
+    95                           tablat	equ	0xFF5
+    96                           postinc0	equ	0xFEE
+    97                           postdec1	equ	0xFE5
+    98                           fsr1l	equ	0xFE1
+    99                           
+   100                           	psect	dataCOMRAM
+   101  000016                     __pdataCOMRAM:
+   102                           	opt stack 0
+   103  000016                     _digit:
+   104                           	opt stack 0
+   105  000016                     	ds	10
+   106  000020                     read_digital_keypad@once:
+   107                           	opt stack 0
+   108  000020                     	ds	1
+   109  000021                     _ssd:
+   110                           	opt stack 0
+   111  000021                     	ds	4
+   112                           tblptru	equ	0xFF8
+   113                           tblptrh	equ	0xFF7
+   114                           tblptrl	equ	0xFF6
+   115                           tablat	equ	0xFF5
+   116                           postinc0	equ	0xFEE
+   117                           postdec1	equ	0xFE5
+   118                           fsr1l	equ	0xFE1
+   119                           
+   120                           	psect	cstackCOMRAM
+   121  000001                     __pcstackCOMRAM:
+   122                           	opt stack 0
+   123  000001                     ?___lwdiv:
+   124                           	opt stack 0
+   125  000001                     write_internal_eeprom@data:
+   126                           	opt stack 0
+   127  000001                     read_internal_eeprom@address:
+   128                           	opt stack 0
+   129  000001                     read_digital_keypad@detection_type:
+   130                           	opt stack 0
+   131  000001                     display@data:
+   132                           	opt stack 0
+   133  000001                     ___lwdiv@dividend:
+   134                           	opt stack 0
+   135                           
+   136                           ; 2 bytes @ 0x0
+   137  000001                     	ds	1
+   138  000002                     write_internal_eeprom@address:
+   139                           	opt stack 0
+   140                           
+   141                           ; 1 bytes @ 0x1
+   142  000002                     	ds	1
+   143  000003                     ??_display:
+   144  000003                     ___lwdiv@divisor:
+   145                           	opt stack 0
+   146                           
+   147                           ; 2 bytes @ 0x2
+   148  000003                     	ds	2
+   149  000005                     display@wait:
+   150                           	opt stack 0
+   151  000005                     ___lwdiv@quotient:
+   152                           	opt stack 0
+   153                           
+   154                           ; 2 bytes @ 0x4
+   155  000005                     	ds	2
+   156  000007                     display@digit:
+   157                           	opt stack 0
+   158  000007                     ___lwdiv@counter:
+   159                           	opt stack 0
+   160                           
+   161                           ; 1 bytes @ 0x6
+   162  000007                     	ds	1
+   163  000008                     ?___lwmod:
+   164                           	opt stack 0
+   165  000008                     ___lwmod@dividend:
+   166                           	opt stack 0
+   167                           
+   168                           ; 2 bytes @ 0x7
+   169  000008                     	ds	2
+   170  00000A                     ___lwmod@divisor:
+   171                           	opt stack 0
+   172                           
+   173                           ; 2 bytes @ 0x9
+   174  00000A                     	ds	2
+   175  00000C                     ___lwmod@counter:
+   176                           	opt stack 0
+   177                           
+   178                           ; 1 bytes @ 0xB
+   179  00000C                     	ds	1
+   180  00000D                     ??_main:
+   181                           
+   182                           ; 1 bytes @ 0xC
+   183  00000D                     	ds	4
+   184  000011                     main@delay:
+   185                           	opt stack 0
+   186                           
+   187                           ; 2 bytes @ 0x10
+   188  000011                     	ds	2
+   189  000013                     main@key:
+   190                           	opt stack 0
+   191                           
+   192                           ; 1 bytes @ 0x12
+   193  000013                     	ds	1
+   194  000014                     main@count:
+   195                           	opt stack 0
+   196                           
+   197                           ; 2 bytes @ 0x13
+   198  000014                     	ds	2
+   199                           tblptru	equ	0xFF8
+   200                           tblptrh	equ	0xFF7
+   201                           tblptrl	equ	0xFF6
+   202                           tablat	equ	0xFF5
+   203                           postinc0	equ	0xFEE
+   204                           postdec1	equ	0xFE5
+   205                           fsr1l	equ	0xFE1
+   206                           
+   207 ;;
+   208 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+   209 ;;
+   210 ;; *************** function _main *****************
+   211 ;; Defined at:
+   212 ;;		line 15 in file "main.c"
+   213 ;; Parameters:    Size  Location     Type
+   214 ;;		None
+   215 ;; Auto vars:     Size  Location     Type
+   216 ;;  count           2   19[COMRAM] unsigned short 
+   217 ;;  delay           2   16[COMRAM] unsigned short 
+   218 ;;  key             1   18[COMRAM] unsigned char 
+   219 ;; Return value:  Size  Location     Type
+   220 ;;                  1    wreg      void 
+   221 ;; Registers used:
+   222 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   223 ;; Tracked objects:
+   224 ;;		On entry : 0/0
+   225 ;;		On exit  : 0/0
+   226 ;;		Unchanged: 0/0
+   227 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   228 ;;      Params:         0       0       0       0       0       0       0
+   229 ;;      Locals:         5       0       0       0       0       0       0
+   230 ;;      Temps:          4       0       0       0       0       0       0
+   231 ;;      Totals:         9       0       0       0       0       0       0
+   232 ;;Total ram usage:        9 bytes
+   233 ;; Hardware stack levels required when called:    2
+   234 ;; This function calls:
+   235 ;;		___lwdiv
+   236 ;;		___lwmod
+   237 ;;		_display
+   238 ;;		_init_config
+   239 ;;		_read_digital_keypad
+   240 ;;		_read_internal_eeprom
+   241 ;;		_write_internal_eeprom
+   242 ;; This function is called by:
+   243 ;;		Startup code after reset
+   244 ;; This function uses a non-reentrant model
+   245 ;;
+   246                           
+   247                           	psect	text0
+   248  002EB2                     __ptext0:
+   249                           	opt stack 0
+   250  002EB2                     _main:
+   251                           	opt stack 29
+   252                           
+   253                           ;main.c: 17: unsigned char key;
+   254                           ;main.c: 18: unsigned short count, delay = 0;
+   255                           
+   256                           ;incstack = 0
+   257  002EB2  0E00               	movlw	0
+   258  002EB4  6E12               	movwf	main@delay+1,c
+   259  002EB6  0E00               	movlw	0
+   260  002EB8  6E11               	movwf	main@delay,c
+   261                           
+   262                           ;main.c: 20: init_config();
+   263  002EBA  EC7A  F016         	call	_init_config	;wreg free
+   264                           
+   265                           ;main.c: 22: count = (read_internal_eeprom(0x00) << 8) | read_internal_eeprom(0x01);
+   266  002EBE  0E00               	movlw	0
+   267  002EC0  EC96  F016         	call	_read_internal_eeprom
+   268  002EC4  6E0D               	movwf	??_main& (0+255),c
+   269  002EC6  500D               	movf	??_main,w,c
+   270  002EC8  6E0F               	movwf	(??_main+2)& (0+255),c
+   271  002ECA  6A0E               	clrf	(??_main+1)& (0+255),c
+   272  002ECC  0E01               	movlw	1
+   273  002ECE  EC96  F016         	call	_read_internal_eeprom
+   274  002ED2  6E10               	movwf	(??_main+3)& (0+255),c
+   275  002ED4  5010               	movf	??_main+3,w,c
+   276  002ED6  100E               	iorwf	??_main+1,w,c
+   277  002ED8  6E14               	movwf	main@count,c
+   278  002EDA  500F               	movf	??_main+2,w,c
+   279  002EDC  6E15               	movwf	main@count+1,c
+   280  002EDE                     l947:
+   281                           
+   282                           ;main.c: 25: {
+   283                           ;main.c: 26: key = read_digital_keypad(1);
+   284  002EDE  0E01               	movlw	1
+   285  002EE0  ECC5  F016         	call	_read_digital_keypad
+   286  002EE4  6E13               	movwf	main@key,c
+   287                           
+   288                           ;main.c: 28: if(delay++ == 100)
+   289  002EE6  4A11               	infsnz	main@delay,f,c
+   290  002EE8  2A12               	incf	main@delay+1,f,c
+   291  002EEA  0E65               	movlw	101
+   292  002EEC  1811               	xorwf	main@delay,w,c
+   293  002EEE  1012               	iorwf	main@delay+1,w,c
+   294  002EF0  A4D8               	btfss	status,2,c
+   295  002EF2  D006               	goto	l955
+   296                           
+   297                           ;main.c: 29: {
+   298                           ;main.c: 31: ++count;
+   299  002EF4  4A14               	infsnz	main@count,f,c
+   300  002EF6  2A15               	incf	main@count+1,f,c
+   301                           
+   302                           ;main.c: 32: delay = 0;
+   303  002EF8  0E00               	movlw	0
+   304  002EFA  6E12               	movwf	main@delay+1,c
+   305  002EFC  0E00               	movlw	0
+   306  002EFE  6E11               	movwf	main@delay,c
+   307  002F00                     l955:
+   308                           
+   309                           ;main.c: 33: }
+   310                           ;main.c: 34: if (key == 0x0E)
+   311  002F00  0E0E               	movlw	14
+   312  002F02  1813               	xorwf	main@key,w,c
+   313  002F04  A4D8               	btfss	status,2,c
+   314  002F06  D00B               	goto	l959
+   315                           
+   316                           ;main.c: 35: {
+   317                           ;main.c: 36: write_internal_eeprom(0x00, (count >> 8) & 0xFF);
+   318  002F08  5015               	movf	main@count+1,w,c
+   319  002F0A  6E01               	movwf	write_internal_eeprom@data,c
+   320  002F0C  0E00               	movlw	0
+   321  002F0E  EC9F  F016         	call	_write_internal_eeprom
+   322                           
+   323                           ;main.c: 37: write_internal_eeprom(0x01, count & 0xFF);
+   324  002F12  C014  F001         	movff	main@count,write_internal_eeprom@data
+   325  002F16  0E01               	movlw	1
+   326  002F18  EC9F  F016         	call	_write_internal_eeprom
+   327                           
+   328                           ;main.c: 38: }
+   329  002F1C  D00E               	goto	l963
+   330  002F1E                     l959:
+   331                           
+   332                           ;main.c: 39: else if (key == 0x0D)
+   333  002F1E  0E0D               	movlw	13
+   334  002F20  1813               	xorwf	main@key,w,c
+   335  002F22  A4D8               	btfss	status,2,c
+   336  002F24  D00A               	goto	l963
+   337                           
+   338                           ;main.c: 40: {
+   339                           ;main.c: 42: write_internal_eeprom(0x00, 0x00);
+   340  002F26  0E00               	movlw	0
+   341  002F28  6E01               	movwf	write_internal_eeprom@data,c
+   342  002F2A  0E00               	movlw	0
+   343  002F2C  EC9F  F016         	call	_write_internal_eeprom
+   344                           
+   345                           ;main.c: 43: write_internal_eeprom(0x01, 0x0A);
+   346  002F30  0E0A               	movlw	10
+   347  002F32  6E01               	movwf	write_internal_eeprom@data,c
+   348  002F34  0E01               	movlw	1
+   349  002F36  EC9F  F016         	call	_write_internal_eeprom
+   350  002F3A                     l963:
+   351                           
+   352                           ;main.c: 44: }
+   353                           ;main.c: 46: { ssd[3] = digit[count % 10]; ssd[2] = digit[(count / 10) % 10]; ssd[1] = d
+      +                          igit[(count / 100) % 10]; ssd[0] = digit[(count / 1000)]; };
+   354  002F3A  C014  F008         	movff	main@count,___lwmod@dividend
+   355  002F3E  C015  F009         	movff	main@count+1,___lwmod@dividend+1
+   356  002F42  0E00               	movlw	0
+   357  002F44  6E0B               	movwf	___lwmod@divisor+1,c
+   358  002F46  0E0A               	movlw	10
+   359  002F48  6E0A               	movwf	___lwmod@divisor,c
+   360  002F4A  ECE3  F016         	call	___lwmod	;wreg free
+   361  002F4E  0E16               	movlw	low _digit
+   362  002F50  2408               	addwf	?___lwmod,w,c
+   363  002F52  6ED9               	movwf	fsr2l,c
+   364  002F54  0E00               	movlw	high _digit
+   365  002F56  2009               	addwfc	?___lwmod+1,w,c
+   366  002F58  6EDA               	movwf	fsr2h,c
+   367  002F5A  50DF               	movf	indf2,w,c
+   368  002F5C  6E24               	movwf	_ssd+3,c
+   369  002F5E  0E00               	movlw	0
+   370  002F60  6E04               	movwf	___lwdiv@divisor+1,c
+   371  002F62  0E0A               	movlw	10
+   372  002F64  6E03               	movwf	___lwdiv@divisor,c
+   373  002F66  C014  F001         	movff	main@count,___lwdiv@dividend
+   374  002F6A  C015  F002         	movff	main@count+1,___lwdiv@dividend+1
+   375  002F6E  EC04  F017         	call	___lwdiv	;wreg free
+   376  002F72  C001  F008         	movff	?___lwdiv,___lwmod@dividend
+   377  002F76  C002  F009         	movff	?___lwdiv+1,___lwmod@dividend+1
+   378  002F7A  0E00               	movlw	0
+   379  002F7C  6E0B               	movwf	___lwmod@divisor+1,c
+   380  002F7E  0E0A               	movlw	10
+   381  002F80  6E0A               	movwf	___lwmod@divisor,c
+   382  002F82  ECE3  F016         	call	___lwmod	;wreg free
+   383  002F86  0E16               	movlw	low _digit
+   384  002F88  2408               	addwf	?___lwmod,w,c
+   385  002F8A  6ED9               	movwf	fsr2l,c
+   386  002F8C  0E00               	movlw	high _digit
+   387  002F8E  2009               	addwfc	?___lwmod+1,w,c
+   388  002F90  6EDA               	movwf	fsr2h,c
+   389  002F92  50DF               	movf	indf2,w,c
+   390  002F94  6E23               	movwf	_ssd+2,c
+   391  002F96  0E00               	movlw	0
+   392  002F98  6E04               	movwf	___lwdiv@divisor+1,c
+   393  002F9A  0E64               	movlw	100
+   394  002F9C  6E03               	movwf	___lwdiv@divisor,c
+   395  002F9E  C014  F001         	movff	main@count,___lwdiv@dividend
+   396  002FA2  C015  F002         	movff	main@count+1,___lwdiv@dividend+1
+   397  002FA6  EC04  F017         	call	___lwdiv	;wreg free
+   398  002FAA  C001  F008         	movff	?___lwdiv,___lwmod@dividend
+   399  002FAE  C002  F009         	movff	?___lwdiv+1,___lwmod@dividend+1
+   400  002FB2  0E00               	movlw	0
+   401  002FB4  6E0B               	movwf	___lwmod@divisor+1,c
+   402  002FB6  0E0A               	movlw	10
+   403  002FB8  6E0A               	movwf	___lwmod@divisor,c
+   404  002FBA  ECE3  F016         	call	___lwmod	;wreg free
+   405  002FBE  0E16               	movlw	low _digit
+   406  002FC0  2408               	addwf	?___lwmod,w,c
+   407  002FC2  6ED9               	movwf	fsr2l,c
+   408  002FC4  0E00               	movlw	high _digit
+   409  002FC6  2009               	addwfc	?___lwmod+1,w,c
+   410  002FC8  6EDA               	movwf	fsr2h,c
+   411  002FCA  50DF               	movf	indf2,w,c
+   412  002FCC  6E22               	movwf	_ssd+1,c
+   413  002FCE  C014  F001         	movff	main@count,___lwdiv@dividend
+   414  002FD2  C015  F002         	movff	main@count+1,___lwdiv@dividend+1
+   415  002FD6  0E03               	movlw	3
+   416  002FD8  6E04               	movwf	___lwdiv@divisor+1,c
+   417  002FDA  0EE8               	movlw	232
+   418  002FDC  6E03               	movwf	___lwdiv@divisor,c
+   419  002FDE  EC04  F017         	call	___lwdiv	;wreg free
+   420  002FE2  0E16               	movlw	low _digit
+   421  002FE4  2401               	addwf	?___lwdiv,w,c
+   422  002FE6  6ED9               	movwf	fsr2l,c
+   423  002FE8  0E00               	movlw	high _digit
+   424  002FEA  2002               	addwfc	?___lwdiv+1,w,c
+   425  002FEC  6EDA               	movwf	fsr2h,c
+   426  002FEE  50DF               	movf	indf2,w,c
+   427  002FF0  6E21               	movwf	_ssd,c
+   428                           
+   429                           ;main.c: 48: display(ssd);
+   430  002FF2  0E21               	movlw	low _ssd
+   431  002FF4  6E01               	movwf	display@data,c
+   432  002FF6  0E00               	movlw	high _ssd
+   433  002FF8  6E02               	movwf	display@data+1,c
+   434  002FFA  EC2D  F017         	call	_display	;wreg free
+   435  002FFE  D76F               	goto	l947
+   436  003000                     __end_of_main:
+   437                           	opt stack 0
+   438                           tblptru	equ	0xFF8
+   439                           tblptrh	equ	0xFF7
+   440                           tblptrl	equ	0xFF6
+   441                           tablat	equ	0xFF5
+   442                           postinc0	equ	0xFEE
+   443                           postdec1	equ	0xFE5
+   444                           fsr1l	equ	0xFE1
+   445                           indf2	equ	0xFDF
+   446                           fsr2h	equ	0xFDA
+   447                           fsr2l	equ	0xFD9
+   448                           status	equ	0xFD8
+   449                           
+   450 ;; *************** function _write_internal_eeprom *****************
+   451 ;; Defined at:
+   452 ;;		line 3 in file "eeprom.c"
+   453 ;; Parameters:    Size  Location     Type
+   454 ;;  address         1    wreg     unsigned char 
+   455 ;;  data            1    0[COMRAM] unsigned char 
+   456 ;; Auto vars:     Size  Location     Type
+   457 ;;  address         1    1[COMRAM] unsigned char 
+   458 ;; Return value:  Size  Location     Type
+   459 ;;                  1    wreg      void 
+   460 ;; Registers used:
+   461 ;;		wreg, status,2
+   462 ;; Tracked objects:
+   463 ;;		On entry : 0/0
+   464 ;;		On exit  : 0/0
+   465 ;;		Unchanged: 0/0
+   466 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   467 ;;      Params:         1       0       0       0       0       0       0
+   468 ;;      Locals:         1       0       0       0       0       0       0
+   469 ;;      Temps:          0       0       0       0       0       0       0
+   470 ;;      Totals:         2       0       0       0       0       0       0
+   471 ;;Total ram usage:        2 bytes
+   472 ;; Hardware stack levels used:    1
+   473 ;; This function calls:
+   474 ;;		Nothing
+   475 ;; This function is called by:
+   476 ;;		_main
+   477 ;; This function uses a non-reentrant model
+   478 ;;
+   479                           
+   480                           	psect	text1
+   481  002D3E                     __ptext1:
+   482                           	opt stack 0
+   483  002D3E                     _write_internal_eeprom:
+   484                           	opt stack 30
+   485                           
+   486                           ;incstack = 0
+   487                           ;write_internal_eeprom@address stored from wreg
+   488  002D3E  6E02               	movwf	write_internal_eeprom@address,c
+   489                           
+   490                           ;eeprom.c: 6: EEADR = address;
+   491  002D40  C002  FFA9         	movff	write_internal_eeprom@address,4009	;volatile
+   492                           
+   493                           ;eeprom.c: 9: EEDATA = data;
+   494  002D44  C001  FFA8         	movff	write_internal_eeprom@data,4008	;volatile
+   495                           
+   496                           ;eeprom.c: 12: EECON1bits.EEPGD = 0;
+   497  002D48  9EA6               	bcf	4006,7,c	;volatile
+   498                           
+   499                           ;eeprom.c: 15: EECON1bits.CFGS = 0;
+   500  002D4A  9CA6               	bcf	4006,6,c	;volatile
+   501                           
+   502                           ;eeprom.c: 18: EECON1bits.WREN = 1;
+   503  002D4C  84A6               	bsf	4006,2,c	;volatile
+   504                           
+   505                           ;eeprom.c: 21: GIE = 0;
+   506  002D4E  9EF2               	bcf	intcon,7,c	;volatile
+   507                           
+   508                           ;eeprom.c: 24: EECON2 = 0x55;
+   509  002D50  0E55               	movlw	85
+   510  002D52  6EA7               	movwf	4007,c	;volatile
+   511                           
+   512                           ;eeprom.c: 25: EECON2 = 0xAA;
+   513  002D54  0EAA               	movlw	170
+   514  002D56  6EA7               	movwf	4007,c	;volatile
+   515                           
+   516                           ;eeprom.c: 28: EECON1bits.WR = 1;
+   517  002D58  82A6               	bsf	4006,1,c	;volatile
+   518                           
+   519                           ;eeprom.c: 31: GIE = 1;
+   520  002D5A  8EF2               	bsf	intcon,7,c	;volatile
+   521  002D5C                     l63:
+   522  002D5C  A8A1               	btfss	4001,4,c	;volatile
+   523  002D5E  D7FE               	goto	l63
+   524                           
+   525                           ;eeprom.c: 37: PIR2bits.EEIF = 0;
+   526  002D60  98A1               	bcf	4001,4,c	;volatile
+   527  002D62  0012               	return		;funcret
+   528  002D64                     __end_of_write_internal_eeprom:
+   529                           	opt stack 0
+   530                           tblptru	equ	0xFF8
+   531                           tblptrh	equ	0xFF7
+   532                           tblptrl	equ	0xFF6
+   533                           tablat	equ	0xFF5
+   534                           intcon	equ	0xFF2
+   535                           postinc0	equ	0xFEE
+   536                           postdec1	equ	0xFE5
+   537                           fsr1l	equ	0xFE1
+   538                           indf2	equ	0xFDF
+   539                           fsr2h	equ	0xFDA
+   540                           fsr2l	equ	0xFD9
+   541                           status	equ	0xFD8
+   542                           
+   543 ;; *************** function _read_internal_eeprom *****************
+   544 ;; Defined at:
+   545 ;;		line 40 in file "eeprom.c"
+   546 ;; Parameters:    Size  Location     Type
+   547 ;;  address         1    wreg     unsigned char 
+   548 ;; Auto vars:     Size  Location     Type
+   549 ;;  address         1    0[COMRAM] unsigned char 
+   550 ;; Return value:  Size  Location     Type
+   551 ;;                  1    wreg      unsigned char 
+   552 ;; Registers used:
+   553 ;;		wreg, status,2
+   554 ;; Tracked objects:
+   555 ;;		On entry : 0/0
+   556 ;;		On exit  : 0/0
+   557 ;;		Unchanged: 0/0
+   558 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   559 ;;      Params:         0       0       0       0       0       0       0
+   560 ;;      Locals:         1       0       0       0       0       0       0
+   561 ;;      Temps:          0       0       0       0       0       0       0
+   562 ;;      Totals:         1       0       0       0       0       0       0
+   563 ;;Total ram usage:        1 bytes
+   564 ;; Hardware stack levels used:    1
+   565 ;; This function calls:
+   566 ;;		Nothing
+   567 ;; This function is called by:
+   568 ;;		_main
+   569 ;; This function uses a non-reentrant model
+   570 ;;
+   571                           
+   572                           	psect	text2
+   573  002D2C                     __ptext2:
+   574                           	opt stack 0
+   575  002D2C                     _read_internal_eeprom:
+   576                           	opt stack 30
+   577                           
+   578                           ;incstack = 0
+   579                           ;read_internal_eeprom@address stored from wreg
+   580  002D2C  6E01               	movwf	read_internal_eeprom@address,c
+   581                           
+   582                           ;eeprom.c: 43: EEADR = address;
+   583  002D2E  C001  FFA9         	movff	read_internal_eeprom@address,4009	;volatile
+   584                           
+   585                           ;eeprom.c: 46: EECON1bits.WREN = 0;
+   586  002D32  94A6               	bcf	4006,2,c	;volatile
+   587                           
+   588                           ;eeprom.c: 49: EECON1bits.EEPGD = 0;
+   589  002D34  9EA6               	bcf	4006,7,c	;volatile
+   590                           
+   591                           ;eeprom.c: 52: EECON1bits.CFGS = 0;
+   592  002D36  9CA6               	bcf	4006,6,c	;volatile
+   593                           
+   594                           ;eeprom.c: 55: EECON1bits.RD = 1;
+   595  002D38  80A6               	bsf	4006,0,c	;volatile
+   596                           
+   597                           ;eeprom.c: 58: return EEDATA;
+   598  002D3A  50A8               	movf	4008,w,c	;volatile
+   599  002D3C  0012               	return	
+   600  002D3E                     __end_of_read_internal_eeprom:
+   601                           	opt stack 0
+   602                           tblptru	equ	0xFF8
+   603                           tblptrh	equ	0xFF7
+   604                           tblptrl	equ	0xFF6
+   605                           tablat	equ	0xFF5
+   606                           intcon	equ	0xFF2
+   607                           postinc0	equ	0xFEE
+   608                           postdec1	equ	0xFE5
+   609                           fsr1l	equ	0xFE1
+   610                           indf2	equ	0xFDF
+   611                           fsr2h	equ	0xFDA
+   612                           fsr2l	equ	0xFD9
+   613                           status	equ	0xFD8
+   614                           
+   615 ;; *************** function _read_digital_keypad *****************
+   616 ;; Defined at:
+   617 ;;		line 9 in file "digital_keypad.c"
+   618 ;; Parameters:    Size  Location     Type
+   619 ;;  detection_ty    1    wreg     unsigned char 
+   620 ;; Auto vars:     Size  Location     Type
+   621 ;;  detection_ty    1    0[COMRAM] unsigned char 
+   622 ;; Return value:  Size  Location     Type
+   623 ;;                  1    wreg      unsigned char 
+   624 ;; Registers used:
+   625 ;;		wreg, status,2, status,0
+   626 ;; Tracked objects:
+   627 ;;		On entry : 0/0
+   628 ;;		On exit  : 0/0
+   629 ;;		Unchanged: 0/0
+   630 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   631 ;;      Params:         0       0       0       0       0       0       0
+   632 ;;      Locals:         1       0       0       0       0       0       0
+   633 ;;      Temps:          0       0       0       0       0       0       0
+   634 ;;      Totals:         1       0       0       0       0       0       0
+   635 ;;Total ram usage:        1 bytes
+   636 ;; Hardware stack levels used:    1
+   637 ;; This function calls:
+   638 ;;		Nothing
+   639 ;; This function is called by:
+   640 ;;		_main
+   641 ;; This function uses a non-reentrant model
+   642 ;;
+   643                           
+   644                           	psect	text3
+   645  002D8A                     __ptext3:
+   646                           	opt stack 0
+   647  002D8A                     _read_digital_keypad:
+   648                           	opt stack 30
+   649                           
+   650                           ;incstack = 0
+   651                           ;read_digital_keypad@detection_type stored from wreg
+   652  002D8A  6E01               	movwf	read_digital_keypad@detection_type,c
+   653                           
+   654                           ;digital_keypad.c: 11: static unsigned char once = 1;
+   655                           ;digital_keypad.c: 13: if (detection_type == 1)
+   656  002D8C  0401               	decf	read_digital_keypad@detection_type,w,c
+   657  002D8E  A4D8               	btfss	status,2,c
+   658  002D90  D015               	goto	l747
+   659                           
+   660                           ;digital_keypad.c: 14: {
+   661                           ;digital_keypad.c: 15: if (((PORTC & 0x0F) != 0x0F) && once)
+   662  002D92  5082               	movf	3970,w,c	;volatile
+   663  002D94  0B0F               	andlw	15
+   664  002D96  0A0F               	xorlw	15
+   665  002D98  B4D8               	btfsc	status,2,c
+   666  002D9A  D008               	goto	l743
+   667  002D9C  5020               	movf	read_digital_keypad@once,w,c
+   668  002D9E  B4D8               	btfsc	status,2,c
+   669  002DA0  D005               	goto	l743
+   670                           
+   671                           ;digital_keypad.c: 16: {
+   672                           ;digital_keypad.c: 17: once = 0;
+   673  002DA2  0E00               	movlw	0
+   674  002DA4  6E20               	movwf	read_digital_keypad@once,c
+   675  002DA6                     l737:
+   676                           
+   677                           ;digital_keypad.c: 19: return (PORTC & 0x0F);
+   678  002DA6  5082               	movf	3970,w,c	;volatile
+   679  002DA8  0B0F               	andlw	15
+   680  002DAA  0012               	return	
+   681  002DAC                     l743:
+   682                           
+   683                           ;digital_keypad.c: 21: else if ((PORTC & 0x0F) == 0x0F)
+   684  002DAC  5082               	movf	3970,w,c	;volatile
+   685  002DAE  0B0F               	andlw	15
+   686  002DB0  0A0F               	xorlw	15
+   687  002DB2  A4D8               	btfss	status,2,c
+   688  002DB4  D006               	goto	l753
+   689                           
+   690                           ;digital_keypad.c: 22: {
+   691                           ;digital_keypad.c: 23: once = 1;
+   692  002DB6  0E01               	movlw	1
+   693  002DB8  6E20               	movwf	read_digital_keypad@once,c
+   694                           
+   695                           ;digital_keypad.c: 24: }
+   696                           ;digital_keypad.c: 25: }
+   697  002DBA  D003               	goto	l753
+   698  002DBC                     l747:
+   699                           
+   700                           ;digital_keypad.c: 26: else if (detection_type == 0)
+   701  002DBC  5001               	movf	read_digital_keypad@detection_type,w,c
+   702  002DBE  B4D8               	btfsc	status,2,c
+   703  002DC0  D7F2               	goto	l737
+   704  002DC2                     l753:
+   705                           
+   706                           ;digital_keypad.c: 29: }
+   707                           ;digital_keypad.c: 31: return 0xFF;
+   708  002DC2  0EFF               	movlw	255
+   709  002DC4  0012               	return	
+   710  002DC6                     __end_of_read_digital_keypad:
+   711                           	opt stack 0
+   712                           tblptru	equ	0xFF8
+   713                           tblptrh	equ	0xFF7
+   714                           tblptrl	equ	0xFF6
+   715                           tablat	equ	0xFF5
+   716                           intcon	equ	0xFF2
+   717                           postinc0	equ	0xFEE
+   718                           postdec1	equ	0xFE5
+   719                           fsr1l	equ	0xFE1
+   720                           indf2	equ	0xFDF
+   721                           fsr2h	equ	0xFDA
+   722                           fsr2l	equ	0xFD9
+   723                           status	equ	0xFD8
+   724                           
+   725 ;; *************** function _init_config *****************
+   726 ;; Defined at:
+   727 ;;		line 9 in file "main.c"
+   728 ;; Parameters:    Size  Location     Type
+   729 ;;		None
+   730 ;; Auto vars:     Size  Location     Type
+   731 ;;		None
+   732 ;; Return value:  Size  Location     Type
+   733 ;;                  1    wreg      void 
+   734 ;; Registers used:
+   735 ;;		wreg, status,2, status,0, cstack
+   736 ;; Tracked objects:
+   737 ;;		On entry : 0/0
+   738 ;;		On exit  : 0/0
+   739 ;;		Unchanged: 0/0
+   740 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   741 ;;      Params:         0       0       0       0       0       0       0
+   742 ;;      Locals:         0       0       0       0       0       0       0
+   743 ;;      Temps:          0       0       0       0       0       0       0
+   744 ;;      Totals:         0       0       0       0       0       0       0
+   745 ;;Total ram usage:        0 bytes
+   746 ;; Hardware stack levels used:    1
+   747 ;; Hardware stack levels required when called:    1
+   748 ;; This function calls:
+   749 ;;		_init_digital_keypad
+   750 ;;		_init_ssd_control
+   751 ;; This function is called by:
+   752 ;;		_main
+   753 ;; This function uses a non-reentrant model
+   754 ;;
+   755                           
+   756                           	psect	text4
+   757  002CF4                     __ptext4:
+   758                           	opt stack 0
+   759  002CF4                     _init_config:
+   760                           	opt stack 29
+   761                           
+   762                           ;main.c: 11: init_ssd_control();
+   763                           
+   764                           ;incstack = 0
+   765  002CF4  EC8D  F016         	call	_init_ssd_control	;wreg free
+   766                           
+   767                           ;main.c: 12: init_digital_keypad();
+   768  002CF8  EC7F  F016         	call	_init_digital_keypad	;wreg free
+   769  002CFC  0012               	return		;funcret
+   770  002CFE                     __end_of_init_config:
+   771                           	opt stack 0
+   772                           tblptru	equ	0xFF8
+   773                           tblptrh	equ	0xFF7
+   774                           tblptrl	equ	0xFF6
+   775                           tablat	equ	0xFF5
+   776                           intcon	equ	0xFF2
+   777                           postinc0	equ	0xFEE
+   778                           postdec1	equ	0xFE5
+   779                           fsr1l	equ	0xFE1
+   780                           indf2	equ	0xFDF
+   781                           fsr2h	equ	0xFDA
+   782                           fsr2l	equ	0xFD9
+   783                           status	equ	0xFD8
+   784                           
+   785 ;; *************** function _init_ssd_control *****************
+   786 ;; Defined at:
+   787 ;;		line 3 in file "ssd_display.c"
+   788 ;; Parameters:    Size  Location     Type
+   789 ;;		None
+   790 ;; Auto vars:     Size  Location     Type
+   791 ;;		None
+   792 ;; Return value:  Size  Location     Type
+   793 ;;                  1    wreg      void 
+   794 ;; Registers used:
+   795 ;;		wreg, status,2, status,0
+   796 ;; Tracked objects:
+   797 ;;		On entry : 0/0
+   798 ;;		On exit  : 0/0
+   799 ;;		Unchanged: 0/0
+   800 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   801 ;;      Params:         0       0       0       0       0       0       0
+   802 ;;      Locals:         0       0       0       0       0       0       0
+   803 ;;      Temps:          0       0       0       0       0       0       0
+   804 ;;      Totals:         0       0       0       0       0       0       0
+   805 ;;Total ram usage:        0 bytes
+   806 ;; Hardware stack levels used:    1
+   807 ;; This function calls:
+   808 ;;		Nothing
+   809 ;; This function is called by:
+   810 ;;		_init_config
+   811 ;; This function uses a non-reentrant model
+   812 ;;
+   813                           
+   814                           	psect	text5
+   815  002D1A                     __ptext5:
+   816                           	opt stack 0
+   817  002D1A                     _init_ssd_control:
+   818                           	opt stack 29
+   819                           
+   820                           ;ssd_display.c: 6: TRISD = 0x00;
+   821                           
+   822                           ;incstack = 0
+   823  002D1A  0E00               	movlw	0
+   824  002D1C  6E95               	movwf	3989,c	;volatile
+   825                           
+   826                           ;ssd_display.c: 8: TRISA = TRISA & 0xF0;
+   827  002D1E  5092               	movf	3986,w,c	;volatile
+   828  002D20  0BF0               	andlw	240
+   829  002D22  6E92               	movwf	3986,c	;volatile
+   830                           
+   831                           ;ssd_display.c: 11: PORTA = PORTA & 0xF0;
+   832  002D24  5080               	movf	3968,w,c	;volatile
+   833  002D26  0BF0               	andlw	240
+   834  002D28  6E80               	movwf	3968,c	;volatile
+   835  002D2A  0012               	return		;funcret
+   836  002D2C                     __end_of_init_ssd_control:
+   837                           	opt stack 0
+   838                           tblptru	equ	0xFF8
+   839                           tblptrh	equ	0xFF7
+   840                           tblptrl	equ	0xFF6
+   841                           tablat	equ	0xFF5
+   842                           intcon	equ	0xFF2
+   843                           postinc0	equ	0xFEE
+   844                           postdec1	equ	0xFE5
+   845                           fsr1l	equ	0xFE1
+   846                           indf2	equ	0xFDF
+   847                           fsr2h	equ	0xFDA
+   848                           fsr2l	equ	0xFD9
+   849                           status	equ	0xFD8
+   850                           
+   851 ;; *************** function _init_digital_keypad *****************
+   852 ;; Defined at:
+   853 ;;		line 3 in file "digital_keypad.c"
+   854 ;; Parameters:    Size  Location     Type
+   855 ;;		None
+   856 ;; Auto vars:     Size  Location     Type
+   857 ;;		None
+   858 ;; Return value:  Size  Location     Type
+   859 ;;                  1    wreg      void 
+   860 ;; Registers used:
+   861 ;;		wreg, status,2, status,0
+   862 ;; Tracked objects:
+   863 ;;		On entry : 0/0
+   864 ;;		On exit  : 0/0
+   865 ;;		Unchanged: 0/0
+   866 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   867 ;;      Params:         0       0       0       0       0       0       0
+   868 ;;      Locals:         0       0       0       0       0       0       0
+   869 ;;      Temps:          0       0       0       0       0       0       0
+   870 ;;      Totals:         0       0       0       0       0       0       0
+   871 ;;Total ram usage:        0 bytes
+   872 ;; Hardware stack levels used:    1
+   873 ;; This function calls:
+   874 ;;		Nothing
+   875 ;; This function is called by:
+   876 ;;		_init_config
+   877 ;; This function uses a non-reentrant model
+   878 ;;
+   879                           
+   880                           	psect	text6
+   881  002CFE                     __ptext6:
+   882                           	opt stack 0
+   883  002CFE                     _init_digital_keypad:
+   884                           	opt stack 29
+   885                           
+   886                           ;digital_keypad.c: 5: ADCON1 = 0x0F;
+   887                           
+   888                           ;incstack = 0
+   889  002CFE  0E0F               	movlw	15
+   890  002D00  6EC1               	movwf	4033,c	;volatile
+   891                           
+   892                           ;digital_keypad.c: 6: TRISC = TRISC | 0x0F;
+   893  002D02  5094               	movf	3988,w,c	;volatile
+   894  002D04  090F               	iorlw	15
+   895  002D06  6E94               	movwf	3988,c	;volatile
+   896  002D08  0012               	return		;funcret
+   897  002D0A                     __end_of_init_digital_keypad:
+   898                           	opt stack 0
+   899                           tblptru	equ	0xFF8
+   900                           tblptrh	equ	0xFF7
+   901                           tblptrl	equ	0xFF6
+   902                           tablat	equ	0xFF5
+   903                           intcon	equ	0xFF2
+   904                           postinc0	equ	0xFEE
+   905                           postdec1	equ	0xFE5
+   906                           fsr1l	equ	0xFE1
+   907                           indf2	equ	0xFDF
+   908                           fsr2h	equ	0xFDA
+   909                           fsr2l	equ	0xFD9
+   910                           status	equ	0xFD8
+   911                           
+   912 ;; *************** function _display *****************
+   913 ;; Defined at:
+   914 ;;		line 15 in file "ssd_display.c"
+   915 ;; Parameters:    Size  Location     Type
+   916 ;;  data            2    0[COMRAM] PTR unsigned char 
+   917 ;;		 -> ssd(4), 
+   918 ;; Auto vars:     Size  Location     Type
+   919 ;;  wait            2    4[COMRAM] unsigned int 
+   920 ;;  digit           1    6[COMRAM] unsigned char 
+   921 ;;  data_bit        1    0        unsigned char 
+   922 ;; Return value:  Size  Location     Type
+   923 ;;                  1    wreg      void 
+   924 ;; Registers used:
+   925 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   926 ;; Tracked objects:
+   927 ;;		On entry : 0/0
+   928 ;;		On exit  : 0/0
+   929 ;;		Unchanged: 0/0
+   930 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   931 ;;      Params:         2       0       0       0       0       0       0
+   932 ;;      Locals:         3       0       0       0       0       0       0
+   933 ;;      Temps:          2       0       0       0       0       0       0
+   934 ;;      Totals:         7       0       0       0       0       0       0
+   935 ;;Total ram usage:        7 bytes
+   936 ;; Hardware stack levels used:    1
+   937 ;; This function calls:
+   938 ;;		Nothing
+   939 ;; This function is called by:
+   940 ;;		_main
+   941 ;; This function uses a non-reentrant model
+   942 ;;
+   943                           
+   944                           	psect	text7
+   945  002E5A                     __ptext7:
+   946                           	opt stack 0
+   947  002E5A                     _display:
+   948                           	opt stack 30
+   949                           
+   950                           ;ssd_display.c: 17: unsigned int wait;
+   951                           ;ssd_display.c: 18: unsigned char data_bit;
+   952                           ;ssd_display.c: 19: unsigned char digit;
+   953                           ;ssd_display.c: 21: for (digit = 0; digit < 4; digit++)
+   954                           
+   955                           ;incstack = 0
+   956  002E5A  0E00               	movlw	0
+   957  002E5C  6E07               	movwf	display@digit,c
+   958  002E5E                     l887:
+   959  002E5E  0E03               	movlw	3
+   960  002E60  6407               	cpfsgt	display@digit,c
+   961  002E62  D001               	goto	l891
+   962  002E64  0012               	return	
+   963  002E66                     l891:
+   964                           
+   965                           ;ssd_display.c: 22: {
+   966                           ;ssd_display.c: 23: PORTD = data[digit];
+   967  002E66  5007               	movf	display@digit,w,c
+   968  002E68  0D01               	mullw	1
+   969  002E6A  50F3               	movf	prodl,w,c
+   970  002E6C  2401               	addwf	display@data,w,c
+   971  002E6E  6ED9               	movwf	fsr2l,c
+   972  002E70  50F4               	movf	prodh,w,c
+   973  002E72  2002               	addwfc	display@data+1,w,c
+   974  002E74  6EDA               	movwf	fsr2h,c
+   975  002E76  50DF               	movf	indf2,w,c
+   976  002E78  6E83               	movwf	3971,c	;volatile
+   977                           
+   978                           ;ssd_display.c: 24: PORTA = (PORTA & 0xF0) | (0x01 << digit);
+   979  002E7A  C007  F003         	movff	display@digit,??_display
+   980  002E7E  0E01               	movlw	1
+   981  002E80  6E04               	movwf	(??_display+1)& (0+255),c
+   982  002E82  2A03               	incf	??_display,f,c
+   983  002E84  D002               	goto	u224
+   984  002E86                     u225:
+   985  002E86  90D8               	bcf	status,0,c
+   986  002E88  3604               	rlcf	??_display+1,f,c
+   987  002E8A                     u224:
+   988  002E8A  2E03               	decfsz	??_display,f,c
+   989  002E8C  D7FC               	goto	u225
+   990  002E8E  5080               	movf	3968,w,c	;volatile
+   991  002E90  0BF0               	andlw	240
+   992  002E92  1004               	iorwf	??_display+1,w,c
+   993  002E94  6E80               	movwf	3968,c	;volatile
+   994                           
+   995                           ;ssd_display.c: 26: for (wait = 1000; wait--; );
+   996  002E96  0E03               	movlw	3
+   997  002E98  6E06               	movwf	display@wait+1,c
+   998  002E9A  0EE8               	movlw	232
+   999  002E9C  6E05               	movwf	display@wait,c
+  1000  002E9E                     l897:
+  1001  002E9E  0605               	decf	display@wait,f,c
+  1002  002EA0  A0D8               	btfss	status,0,c
+  1003  002EA2  0606               	decf	display@wait+1,f,c
+  1004  002EA4  2805               	incf	display@wait,w,c
+  1005  002EA6  E1FB               	bnz	l897
+  1006  002EA8  2806               	incf	display@wait+1,w,c
+  1007  002EAA  A4D8               	btfss	status,2,c
+  1008  002EAC  D7F8               	goto	l897
+  1009  002EAE  2A07               	incf	display@digit,f,c
+  1010  002EB0  D7D6               	goto	l887
+  1011  002EB2                     __end_of_display:
+  1012                           	opt stack 0
+  1013                           tblptru	equ	0xFF8
+  1014                           tblptrh	equ	0xFF7
+  1015                           tblptrl	equ	0xFF6
+  1016                           tablat	equ	0xFF5
+  1017                           prodh	equ	0xFF4
+  1018                           prodl	equ	0xFF3
+  1019                           intcon	equ	0xFF2
+  1020                           postinc0	equ	0xFEE
+  1021                           postdec1	equ	0xFE5
+  1022                           fsr1l	equ	0xFE1
+  1023                           indf2	equ	0xFDF
+  1024                           fsr2h	equ	0xFDA
+  1025                           fsr2l	equ	0xFD9
+  1026                           status	equ	0xFD8
+  1027                           
+  1028 ;; *************** function ___lwmod *****************
+  1029 ;; Defined at:
+  1030 ;;		line 8 in file "/opt/microchip/xc8/v1.36/sources/common/lwmod.c"
+  1031 ;; Parameters:    Size  Location     Type
+  1032 ;;  dividend        2    7[COMRAM] unsigned int 
+  1033 ;;  divisor         2    9[COMRAM] unsigned int 
+  1034 ;; Auto vars:     Size  Location     Type
+  1035 ;;  counter         1   11[COMRAM] unsigned char 
+  1036 ;; Return value:  Size  Location     Type
+  1037 ;;                  2    7[COMRAM] unsigned int 
+  1038 ;; Registers used:
+  1039 ;;		wreg, status,2, status,0
+  1040 ;; Tracked objects:
+  1041 ;;		On entry : 0/0
+  1042 ;;		On exit  : 0/0
+  1043 ;;		Unchanged: 0/0
+  1044 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1045 ;;      Params:         4       0       0       0       0       0       0
+  1046 ;;      Locals:         1       0       0       0       0       0       0
+  1047 ;;      Temps:          0       0       0       0       0       0       0
+  1048 ;;      Totals:         5       0       0       0       0       0       0
+  1049 ;;Total ram usage:        5 bytes
+  1050 ;; Hardware stack levels used:    1
+  1051 ;; This function calls:
+  1052 ;;		Nothing
+  1053 ;; This function is called by:
+  1054 ;;		_main
+  1055 ;; This function uses a non-reentrant model
+  1056 ;;
+  1057                           
+  1058                           	psect	text8
+  1059  002DC6                     __ptext8:
+  1060                           	opt stack 0
+  1061  002DC6                     ___lwmod:
+  1062                           	opt stack 30
+  1063                           
+  1064                           ;incstack = 0
+  1065  002DC6  500A               	movf	___lwmod@divisor,w,c
+  1066  002DC8  100B               	iorwf	___lwmod@divisor+1,w,c
+  1067  002DCA  B4D8               	btfsc	status,2,c
+  1068  002DCC  D018               	goto	l502
+  1069  002DCE  0E01               	movlw	1
+  1070  002DD0  6E0C               	movwf	___lwmod@counter,c
+  1071  002DD2  D004               	goto	l931
+  1072  002DD4                     l929:
+  1073  002DD4  90D8               	bcf	status,0,c
+  1074  002DD6  360A               	rlcf	___lwmod@divisor,f,c
+  1075  002DD8  360B               	rlcf	___lwmod@divisor+1,f,c
+  1076  002DDA  2A0C               	incf	___lwmod@counter,f,c
+  1077  002DDC                     l931:
+  1078  002DDC  AE0B               	btfss	___lwmod@divisor+1,7,c
+  1079  002DDE  D7FA               	goto	l929
+  1080  002DE0                     l933:
+  1081  002DE0  500A               	movf	___lwmod@divisor,w,c
+  1082  002DE2  5C08               	subwf	___lwmod@dividend,w,c
+  1083  002DE4  500B               	movf	___lwmod@divisor+1,w,c
+  1084  002DE6  5809               	subwfb	___lwmod@dividend+1,w,c
+  1085  002DE8  A0D8               	btfss	status,0,c
+  1086  002DEA  D004               	goto	l937
+  1087  002DEC  500A               	movf	___lwmod@divisor,w,c
+  1088  002DEE  5E08               	subwf	___lwmod@dividend,f,c
+  1089  002DF0  500B               	movf	___lwmod@divisor+1,w,c
+  1090  002DF2  5A09               	subwfb	___lwmod@dividend+1,f,c
+  1091  002DF4                     l937:
+  1092  002DF4  90D8               	bcf	status,0,c
+  1093  002DF6  320B               	rrcf	___lwmod@divisor+1,f,c
+  1094  002DF8  320A               	rrcf	___lwmod@divisor,f,c
+  1095  002DFA  2E0C               	decfsz	___lwmod@counter,f,c
+  1096  002DFC  D7F1               	goto	l933
+  1097  002DFE                     l502:
+  1098  002DFE  C008  F008         	movff	___lwmod@dividend,?___lwmod
+  1099  002E02  C009  F009         	movff	___lwmod@dividend+1,?___lwmod+1
+  1100  002E06  0012               	return		;funcret
+  1101  002E08                     __end_of___lwmod:
+  1102                           	opt stack 0
+  1103                           tblptru	equ	0xFF8
+  1104                           tblptrh	equ	0xFF7
+  1105                           tblptrl	equ	0xFF6
+  1106                           tablat	equ	0xFF5
+  1107                           prodh	equ	0xFF4
+  1108                           prodl	equ	0xFF3
+  1109                           intcon	equ	0xFF2
+  1110                           postinc0	equ	0xFEE
+  1111                           postdec1	equ	0xFE5
+  1112                           fsr1l	equ	0xFE1
+  1113                           indf2	equ	0xFDF
+  1114                           fsr2h	equ	0xFDA
+  1115                           fsr2l	equ	0xFD9
+  1116                           status	equ	0xFD8
+  1117                           
+  1118 ;; *************** function ___lwdiv *****************
+  1119 ;; Defined at:
+  1120 ;;		line 8 in file "/opt/microchip/xc8/v1.36/sources/common/lwdiv.c"
+  1121 ;; Parameters:    Size  Location     Type
+  1122 ;;  dividend        2    0[COMRAM] unsigned int 
+  1123 ;;  divisor         2    2[COMRAM] unsigned int 
+  1124 ;; Auto vars:     Size  Location     Type
+  1125 ;;  quotient        2    4[COMRAM] unsigned int 
+  1126 ;;  counter         1    6[COMRAM] unsigned char 
+  1127 ;; Return value:  Size  Location     Type
+  1128 ;;                  2    0[COMRAM] unsigned int 
+  1129 ;; Registers used:
+  1130 ;;		wreg, status,2, status,0
+  1131 ;; Tracked objects:
+  1132 ;;		On entry : 0/0
+  1133 ;;		On exit  : 0/0
+  1134 ;;		Unchanged: 0/0
+  1135 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1136 ;;      Params:         4       0       0       0       0       0       0
+  1137 ;;      Locals:         3       0       0       0       0       0       0
+  1138 ;;      Temps:          0       0       0       0       0       0       0
+  1139 ;;      Totals:         7       0       0       0       0       0       0
+  1140 ;;Total ram usage:        7 bytes
+  1141 ;; Hardware stack levels used:    1
+  1142 ;; This function calls:
+  1143 ;;		Nothing
+  1144 ;; This function is called by:
+  1145 ;;		_main
+  1146 ;; This function uses a non-reentrant model
+  1147 ;;
+  1148                           
+  1149                           	psect	text9
+  1150  002E08                     __ptext9:
+  1151                           	opt stack 0
+  1152  002E08                     ___lwdiv:
+  1153                           	opt stack 30
+  1154                           
+  1155                           ;incstack = 0
+  1156  002E08  0E00               	movlw	0
+  1157  002E0A  6E06               	movwf	___lwdiv@quotient+1,c
+  1158  002E0C  0E00               	movlw	0
+  1159  002E0E  6E05               	movwf	___lwdiv@quotient,c
+  1160  002E10  5003               	movf	___lwdiv@divisor,w,c
+  1161  002E12  1004               	iorwf	___lwdiv@divisor+1,w,c
+  1162  002E14  B4D8               	btfsc	status,2,c
+  1163  002E16  D01C               	goto	l492
+  1164  002E18  0E01               	movlw	1
+  1165  002E1A  6E07               	movwf	___lwdiv@counter,c
+  1166  002E1C  D004               	goto	l911
+  1167  002E1E                     l909:
+  1168  002E1E  90D8               	bcf	status,0,c
+  1169  002E20  3603               	rlcf	___lwdiv@divisor,f,c
+  1170  002E22  3604               	rlcf	___lwdiv@divisor+1,f,c
+  1171  002E24  2A07               	incf	___lwdiv@counter,f,c
+  1172  002E26                     l911:
+  1173  002E26  AE04               	btfss	___lwdiv@divisor+1,7,c
+  1174  002E28  D7FA               	goto	l909
+  1175  002E2A                     l913:
+  1176  002E2A  90D8               	bcf	status,0,c
+  1177  002E2C  3605               	rlcf	___lwdiv@quotient,f,c
+  1178  002E2E  3606               	rlcf	___lwdiv@quotient+1,f,c
+  1179  002E30  5003               	movf	___lwdiv@divisor,w,c
+  1180  002E32  5C01               	subwf	___lwdiv@dividend,w,c
+  1181  002E34  5004               	movf	___lwdiv@divisor+1,w,c
+  1182  002E36  5802               	subwfb	___lwdiv@dividend+1,w,c
+  1183  002E38  A0D8               	btfss	status,0,c
+  1184  002E3A  D005               	goto	l921
+  1185  002E3C  5003               	movf	___lwdiv@divisor,w,c
+  1186  002E3E  5E01               	subwf	___lwdiv@dividend,f,c
+  1187  002E40  5004               	movf	___lwdiv@divisor+1,w,c
+  1188  002E42  5A02               	subwfb	___lwdiv@dividend+1,f,c
+  1189  002E44  8005               	bsf	___lwdiv@quotient,0,c
+  1190  002E46                     l921:
+  1191  002E46  90D8               	bcf	status,0,c
+  1192  002E48  3204               	rrcf	___lwdiv@divisor+1,f,c
+  1193  002E4A  3203               	rrcf	___lwdiv@divisor,f,c
+  1194  002E4C  2E07               	decfsz	___lwdiv@counter,f,c
+  1195  002E4E  D7ED               	goto	l913
+  1196  002E50                     l492:
+  1197  002E50  C005  F001         	movff	___lwdiv@quotient,?___lwdiv
+  1198  002E54  C006  F002         	movff	___lwdiv@quotient+1,?___lwdiv+1
+  1199  002E58  0012               	return		;funcret
+  1200  002E5A                     __end_of___lwdiv:
+  1201                           	opt stack 0
+  1202  0000                     tblptru	equ	0xFF8
+  1203                           tblptrh	equ	0xFF7
+  1204                           tblptrl	equ	0xFF6
+  1205                           tablat	equ	0xFF5
+  1206                           prodh	equ	0xFF4
+  1207                           prodl	equ	0xFF3
+  1208                           intcon	equ	0xFF2
+  1209                           postinc0	equ	0xFEE
+  1210                           postdec1	equ	0xFE5
+  1211                           fsr1l	equ	0xFE1
+  1212                           indf2	equ	0xFDF
+  1213                           fsr2h	equ	0xFDA
+  1214                           fsr2l	equ	0xFD9
+  1215                           status	equ	0xFD8
+  1216                           tblptru	equ	0xFF8
+  1217                           tblptrh	equ	0xFF7
+  1218                           tblptrl	equ	0xFF6
+  1219                           tablat	equ	0xFF5
+  1220                           prodh	equ	0xFF4
+  1221                           prodl	equ	0xFF3
+  1222                           intcon	equ	0xFF2
+  1223                           postinc0	equ	0xFEE
+  1224                           postdec1	equ	0xFE5
+  1225                           fsr1l	equ	0xFE1
+  1226                           indf2	equ	0xFDF
+  1227                           fsr2h	equ	0xFDA
+  1228                           fsr2l	equ	0xFD9
+  1229                           status	equ	0xFD8
+  1230                           
+  1231                           	psect	rparam
+  1232  0000                     tblptru	equ	0xFF8
+  1233                           tblptrh	equ	0xFF7
+  1234                           tblptrl	equ	0xFF6
+  1235                           tablat	equ	0xFF5
+  1236                           prodh	equ	0xFF4
+  1237                           prodl	equ	0xFF3
+  1238                           intcon	equ	0xFF2
+  1239                           postinc0	equ	0xFEE
+  1240                           postdec1	equ	0xFE5
+  1241                           fsr1l	equ	0xFE1
+  1242                           indf2	equ	0xFDF
+  1243                           fsr2h	equ	0xFDA
+  1244                           fsr2l	equ	0xFD9
+  1245                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        15
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     21      36
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    display@data	PTR unsigned char  size(2) Largest target is 4
+		 -> ssd(COMRAM[4]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->___lwmod
+    ___lwmod->___lwdiv
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 9     9      0    1836
+                                             12 COMRAM     9     9      0
+                            ___lwdiv
+                            ___lwmod
+                            _display
+                        _init_config
+                _read_digital_keypad
+               _read_internal_eeprom
+              _write_internal_eeprom
+ ---------------------------------------------------------------------------------
+ (1) _write_internal_eeprom                                2     1      1     300
+                                              0 COMRAM     2     1      1
+ ---------------------------------------------------------------------------------
+ (1) _read_internal_eeprom                                 1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _read_digital_keypad                                  1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _init_config                                          0     0      0       0
+                _init_digital_keypad
+                   _init_ssd_control
+ ---------------------------------------------------------------------------------
+ (2) _init_ssd_control                                     0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _init_digital_keypad                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _display                                              8     6      2     199
+                                              0 COMRAM     7     5      2
+ ---------------------------------------------------------------------------------
+ (1) ___lwmod                                              5     1      4     543
+                                              7 COMRAM     5     1      4
+                            ___lwdiv (ARG)
+ ---------------------------------------------------------------------------------
+ (1) ___lwdiv                                              7     3      4     546
+                                              0 COMRAM     7     3      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___lwdiv
+   ___lwmod
+     ___lwdiv (ARG)
+   _display
+   _init_config
+     _init_digital_keypad
+     _init_ssd_control
+   _read_digital_keypad
+   _read_internal_eeprom
+   _write_internal_eeprom
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      16        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     15      24       1       37.9%
+BITSFR_3             0      0       0      40        0.0%
+SFR_3                0      0       0      40        0.0%
+BITSFR_2             0      0       0      40        0.0%
+SFR_2                0      0       0      40        0.0%
+BITSFR_1             0      0       0      40        0.0%
+SFR_1                0      0       0      40        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      24       3        0.0%
+DATA                 0      0      24      17        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.36 build -262312587 
+Symbol Table                                                                                   Thu Jan 16 13:33:58 2020
+
+                               l63 2D5C                                l502 2DFE  
+                              l492 2E50                                l911 2E26  
+                              l743 2DAC                                l921 2E46  
+                              l913 2E2A                                l753 2DC2  
+                              l737 2DA6                                l931 2DDC  
+                              l747 2DBC                                l909 2E1E  
+                              l933 2DE0                                l937 2DF4  
+                              l929 2DD4                                l891 2E66  
+                              l963 2F3A                                l955 2F00  
+                              l947 2EDE                                l887 2E5E  
+                              l959 2F1E                                l897 2E9E  
+                              _GIE 007F97                                u224 2E8A  
+                              u225 2E86                                _ssd 0021  
+            ??_read_digital_keypad 0001                        display@data 0001  
+                      display@wait 0005                               _main 2EB2  
+                             fsr1l 000FE1                               indf2 000FDF  
+                             fsr2l 000FD9                               prodh 000FF4  
+                             prodl 000FF3                               start 0000  
+                     ___param_bank 000010                              ?_main 0001  
+                            _EEADR 000FA9                    __end_of___lwdiv 2E5A  
+                  __end_of___lwmod 2E08                       ?_init_config 0001  
+                            _PORTA 000F80                              _PORTC 000F82  
+                            _PORTD 000F83                              _TRISA 000F92  
+                            _TRISC 000F94                              _TRISD 000F95  
+                     display@digit 0007                    __end_of_display 2EB2  
+                            _digit 0016                              tablat 000FF5  
+                            status 000FD8            ??_write_internal_eeprom 0002  
+                  __initialization 2D64                       __end_of_main 3000  
+                ?_init_ssd_control 0001                             ??_main 000D  
+                    __activetblptr 000000                 ??_init_ssd_control 0001  
+                           _ADCON1 000FC1                             _EEDATA 000FA8  
+                           _EECON2 000FA7        __end_of_init_digital_keypad 2D0A  
+                        ??___lwdiv 0005                          ??___lwmod 000C  
+                        ??_display 0003                       __pdataCOMRAM 0016  
+                           tblptrh 000FF7                             tblptrl 000FF6  
+                           tblptru 000FF8      __size_of_read_internal_eeprom 0012  
+                       __accesstop 0060            __end_of__initialization 2D84  
+                    ___rparam_used 000001                     __pcstackCOMRAM 0001  
+             __size_of_init_config 000A        __end_of_read_digital_keypad 2DC6  
+      read_internal_eeprom@address 0001     __size_of_write_internal_eeprom 0026  
+    __end_of_write_internal_eeprom 2D64                            __Hparam 0000  
+                          __Lparam 0000                            ___lwdiv 2E08  
+                          ___lwmod 2DC6                            __pcinit 2D64  
+                          __ramtop 0600                            __ptext0 2EB2  
+                          __ptext1 2D3E                            __ptext2 2D2C  
+                          __ptext3 2D8A                            __ptext4 2CF4  
+                          __ptext5 2D1A                            __ptext6 2CFE  
+                          __ptext7 2E5A                            __ptext8 2DC6  
+                          __ptext9 2E08                            _display 2E5A  
+        write_internal_eeprom@data 0001                            main@key 0013  
+             end_of_initialization 2D84          __size_of_init_ssd_control 0012  
+                          postdec1 000FE5                            postinc0 000FEE  
+     __end_of_read_internal_eeprom 2D3E       __size_of_init_digital_keypad 000C  
+                    __pidataCOMRAM 2D0B                start_initialization 2D64  
+                    ??_init_config 0001                   _init_ssd_control 2D1A  
+                 ___lwdiv@dividend 0001                           ?___lwdiv 0001  
+                         ?___lwmod 0008                           ?_display 0001  
+                 ___lwdiv@quotient 0005                __end_of_init_config 2CFE  
+             _read_internal_eeprom 2D2C       __size_of_read_digital_keypad 003C  
+                         _PIR2bits 000FA1              _write_internal_eeprom 2D3E  
+                        main@delay 0011                          main@count 0014  
+read_digital_keypad@detection_type 0001              ?_read_internal_eeprom 0001  
+                        copy_data0 2D78                _init_digital_keypad 2CFE  
+                       _EECON1bits 000FA6                           __Hrparam 0000  
+                         __Lrparam 0000               ?_init_digital_keypad 0001  
+                 __size_of___lwdiv 0052                   __size_of___lwmod 0042  
+                      _init_config 2CF4                   __size_of_display 0058  
+                  ___lwdiv@divisor 0003                    ___lwdiv@counter 0007  
+                    __size_of_main 014E            read_digital_keypad@once 0020  
+           ?_write_internal_eeprom 0001              ??_init_digital_keypad 0001  
+         __end_of_init_ssd_control 2D2C             ??_read_internal_eeprom 0001  
+                 ___lwmod@dividend 0008                _read_digital_keypad 2D8A  
+                  ___lwmod@divisor 000A                    ___lwmod@counter 000C  
+             ?_read_digital_keypad 0001       write_internal_eeprom@address 0002  
